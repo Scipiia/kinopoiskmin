@@ -1,0 +1,204 @@
+~Проект:НАЧАЛО~
+~Asinteger:N=0~
+~Asinteger:K=0~
+~Asinteger:N=N+1~
+Номер_заказа::::~Проект:Номер_заказа~
+~Проект:Номер_заказа:AsString:nom~
+~AsString:user=Система.Пользователь.Название~
+Пользователь::::~AsString:user~
+Объект::::~Проект:Объект~
+Менеджер::::~Проект:Менеджер~
+Идентификатор_ID::::~Проект:Контрагент.Идентификатор_ID~
+Контрагент::::~Проект:Контрагент.Название_контрагента~
+Конструктор::::~Проект:Конструктор~
+Примечание::::~Проект:Примечание~
+Тип_расчета::::~Проект:Тип_расчета~
+Статус_проекта::::~Проект:Статус~
+Отправка_в_производство::::~Проект:Отправка_в_производство~
+Контрагент.Мен::::~Проект:Контрагент.Менеджер~
+Контрагент.Тип::::~Проект:Контрагент.Категория~
+Контрагент.Группы_пользователей::::~Проект:Контрагент.Группы_пользователей~
+Контрагент.Группа_дилера::::~Проект:Контрагент.Группа_дилера~
+Счет::::~Проект:Номер_счета~
+Город::::~Проект:Контрагент.Город~
+Направление_оплаты::::~Проект:Категория~
+~SQL2:Установить:SELECT Reklama.kRekN FROM ListPrj,Clients,Reklama WHERE~
+~SQL2:Добавить:(pUnic=:Индекс1.AsInteger:)AND(ListPrj.kName=Clients.kName)AND(Clients.kRekl=Reklama.kRekl)~
+~SQL2:НАЧАЛО~
+~SQL2:kRekN:AsString:реклама~
+~SQL2:КОНЕЦ~
+Направление_источник::::~AsString:реклама~
+Стоимость_проекта_без_скидок::::~Проект:Стоимость_проекта_без_скидок~
+Скидка_общая::::~Проект:Скидка_общая_%~
+Стоимость_проекта_со_скидками::::~Проект:Стоимость_проекта_со_скидками~
+Стоимость_конструкций_со_скидками::::~Проект:Стоимость_конструкций_со_скидками~
+Стоимость_комплектации_со_скидками::::~Проект:Стоимость_комплектации_со_скидками~
+Стоимость_работ_со_скидками::::~Проект:Стоимость_работ_со_скидками~
+***
+~Изделия:НАЧАЛО~
+**POSSTART**
+~AsInteger:K=K+1~
+~AsInteger:№=0~
+~Изделия:Номер:AsInteger:номер_изд~
+Цвет;;~Изделия:Основная_текстура~;;~Изделия:Номер~;;;;0;;0;;шт;;0
+ЦветВнутр;;~Изделия:Внутренняя_текстура~;;~Изделия:Номер~;;;;0;;0;;шт;;0
+ЦветВнеш;;~Изделия:Внешняя_текстура~;;~Изделия:Номер~;;;;0;;0;;шт;;0
+Высота;;Высота H,мм;;~Изделия:Номер~;;;;;;~Изделия:Высота,_мм~;;мм;;0
+Ширина;;Ширина L,мм;;~Изделия:Номер~;;;;;;~Изделия:Ширина,_мм~;;мм;;0
+Вид_изделия;;~Изделия:Вид_изделия~;;~Изделия:Номер~;;;;;;0;;шт;;0
+Наименование;;~Изделия:Название_изделия~;;~Изделия:Номер~;;;;;;0;;шт;;0
+Кол-во;;Кол-во изделий;;~Изделия:Номер~;;;;;;~Изделия:Количество~;;шт;;0
+Площадь;;Площадь изделий S,м2;;~Изделия:Номер~;;;;~Изделия:Количество~;;~Изделия:Площадь_изделия~;;квм;;0
+Система_профилей;;Система_профилей;;~Изделия:Номер~;;;;~Изделия:Количество~;;~Изделия:Система_профилей~;;шт;;0
+ПодСистема_профилей;;ПодСистема_профилей;;~Изделия:Номер~;;;;~Изделия:Количество~;;~Изделия:ПодСистема_профилей~;;шт;;0
+Стоимостьбезскидок;;Стоимостьбезскидок;;~Изделия:Номер~;;;;~Изделия:Количество~;;~Изделия:Стоимость_изделия_без_скидок~;;руб;;0
+Стоимостьсоскидками;;Стоимостьсоскидками;;~Изделия:Номер~;;;;~Изделия:Количество~;;~Изделия:Стоимость_изделия_со_скидками~;;руб;;0
+Примечание;;~Изделия:Примечание~;;~Изделия:Номер~;;;;~Изделия:Количество~;;0;;;;0
+Эскиз;;~Изделия:Чертеж:width=200:height=200:AsString~;;~Изделия:Номер~;;;;~Изделия:Количество~;;0;;;;0
+**POSEND**
+~AsInteger:№=0~
+~SQL2:Установить:SELECT (SpecPAU.aQtyA) as summa,SpecPAU.aNumb, SpecPAU.clNum, SpecPAU.clNu1, SpecPAU.clNu2, SpecPAU.* FROM SpecPAU WHERE~
+~SQL2:Добавить:(SpecPAU.pUnic=:Индекс1.AsInteger:)AND(SpecPAU.oNumb=:номер_изд.AsInteger:)~
+~SQL2:Добавить:AND(SpecPAU.cLkc<>0)~
+~SQL2:Добавить:ORDER BY SpecPAU.aNumb~ 
+~SQL2:НАЧАЛО~
+~SQL2:aNumb:AsString:артикул~
+~SQL2:nEL:AsInteger:нэлемент~
+~SQL2:CLKK:AsString:слкк~
+~SQL2:clNum:AsInteger:код_текстуры~
+
+~SQL5:Установить:SELECT FIRST 1 aName, aTypI FROM Artikls WHERE (aNumb=:артикул.AsString:)~
+~SQL5:Начало~
+~SQL5:aTypI:AsInteger:код_арт~
+~SQL5:aName:AsString:наименование~
+~SQL5:Конец~
+
+~SQL5:Установить:SELECT cName, cGrup, cCode FROM ColsLst WHERE (cNumb=:код_текстуры.AsInteger:)~
+~SQL5:Начало~
+~SQL5:cName:AsString:имя_текстуры~
+~SQL5:cGrup:AsInteger:группа_текстуры~
+~SQL5:cCode:AsInteger:код_текстуры_1~
+~AsString:имя_имя=''~
+~SQL5:Конец~
+
+~SQL5:Установить:SELECT * FROM VSTALST~
+~SQL5:Добавить:WHERE (VNUMB=:слкк.AsString:)~
+~SQL5:Начало~
+~SQL5:VNAME:AsString:имя_имя~
+~SQL5:Конец~
+
+~AsInteger:код=0~
+~IF:код_текстуры_1<1000:THEN~~AsInteger:код=код_текстуры_1~~ENDIF~
+~SQL2:aNumb:AsString~;;~AsString:наименование~;;~Изделия:Номер~;;~SQL2:clNu1:As.Текстура~/~SQL2:clNu2:As.Текстура~ ;;~Изделия:Количество~;;~SQL2:summa:AsString~;;~AsInteger:код_арт~;;~SQL2:aSeb1:AsFloat~;;~SQL2:aPerc:AsFloat~;;~SQL2:nEL:AsInteger~;;~SQL2:CLKK:AsString~;;~SQL2:ATYPM:AsString~;;~SQL2:ATYPP:AsString~;;~AsString:имя_имя~;;~SQL2:aLeng:AsFloat~;;~SQL2:aRadi:AsFloat~;;~SQL2:aView:AsInt~;;~SQL2:aQtyP:AsInt~;;~SQL2:gForm:AsInt~;;~SQL2:nSQ:AsInt~;;~SQL2:nRama:AsInt~;;~SQL2:aUg01:AsInt~;;~SQL2:aUg02:AsInt~;;~SQL2:cLke:AsInt~;;
+~SQL2:конец~
+**MATEND**
+ ~Изделия:КОНЕЦ~
+###
+##WORKSSTART##
+~SQL2:Установить:SELECT WorkPrj.wNumb,wName,WorkPrj.wValu,WorkPrj.wDesc,wDime,wPric,wPrim,wStep FROM WorkPrj,WorkLst WHERE (WorkPrj.pUnic=:Индекс1.AsInt:)AND(WorkPrj.wUnic=WorkLst.wUnic) ORDER BY wNumb~
+~SQL2:Начало~
+~SQL2:wName:AsString~;;~SQL2:wValu:AsString~;;~SQL2:wDesc:AsString~;;~SQL2:wDime:AsString~;;~SQL2:wPric:AsString~;;~SQL2:wPrim:AsString~;;~SQL2:wStep:AsString~;;
+~SQL2:Конец~
+##WORKSEND##
+##CONTSTART##
+~SQL2:Установить:SELECT ContOrd.oNumb,ContOrd.nElem,ContOrd.oLeng,ContOrd.oHeig,ContOrd.oSqrt,FurnLst.fName FROM ContOrd,FurnLst  WHERE (ContOrd.pUnic=:Индекс1.AsInt:)AND(ContOrd.fUnic=FurnLst.fUnic) ORDER BY ContOrd.oNumb~
+~SQL2:Начало~
+~SQL2:oNumb:AsString~;;~SQL2:nElem:AsString~;;~SQL2:oLeng:AsString~;;~SQL2:oHeig:AsString~;;~SQL2:oSqrt:AsString~;;~SQL2:fName:AsString~;;
+~SQL2:Конец~
+##CONTEND##
+##COMPLECTSTART##
+~SQL2:Установить:SELECT SpecPAU.oNumb,SpecPAU.aNumb,SpecPAU.aPrim,SpecPAU.aLeng,SpecPAU.aRadi,SpecPAU.aPrc1,SpecPAU.aPrcD,SpecPAU.aPerc,SpecPAU.aQtyP,Artikls.aTypI,SpecPAU.aQtyA,SpecPAU.clNum,SpecPAU.clNu1,SpecPAU.clNu2,SpecPAU.aSeb1,SpecPAU.aTypM,SpecPAU.cLkK,SpecPAU.aTypP,SpecPAU.aUgp1,SpecPAU.aUgp2,SpecPAU.nSq FROM SpecPAU, Artikls WHERE (SpecPAU.clkE<0)AND(SpecPAU.pUnic=:Индекс1.AsInt:)AND(Artikls.aNumb=SpecPAU.aNumb) ORDER BY SpecPAU.oNumb,SpecPAU.aUnic~
+~SQL2:Начало~
+~SQL2:aNumb:AsString:артикул~
+~SQL2:aPrim:AsString:примечание~
+~AsString:примечание=Trim(примечание)~
+~SQL2:clNum:AsInteger:код_текстуры~
+~SQL2:aTypI:AsInteger:код~
+	~SQL5:Установить:SELECT cName, cGrup, cCode FROM ColsLst WHERE (cNumb=:код_текстуры.AsInt:)~
+	~SQL5:Начало~
+	~SQL5:cName:AsString:имя_текстуры~
+	~SQL5:cGrup:AsInteger:группа_текстуры~
+	~SQL5:cCode:AsInteger:код_текстуры_1~
+	~SQL5:Конец~
+~AsString:имя_имя=''~
+~AsInteger:код=0~
+~IF:код_текстуры_1<1000:THEN~~AsInteger:код=код_текстуры_1~~ENDIF~
+~TEXT: количество изделий~
+~AsInt:Изделий=1~
+~TEXT: если комплектация принадлежит изделиям~
+~IF(SQL2oNumb>0)THEN~
+	~SQL3:Установить:SELECT oQtyI FROM ListOrd WHERE (pUnic=:Индекс1.AsInt:)AND(oNumb=:SQL2oNumb.AsInt:)~
+	~SQL3:Начало~
+	~SQL3:oQtyI:AsInt:Изделий~
+	~SQL3:Конец~
+~ENDIF~
+~AsFloat:Количество=SQL2aQtyP*Изделий~
+~AsFloat:СуммаБезСкидки=SQL2aPrc1*SQL2aQtyA*(1+SQL2aPerc/100)/SQL2aQtyP~
+~AsFloat:СуммаСоСкидкой=SQL2aPrcD*SQL2aQtyA*(1+SQL2aPerc/100)/SQL2aQtyP~
+~AsFloat:Цена_БезСкидок=СуммаБезСкидки/Количество~
+~SQL2:aNumb:AsString~;;~SQL2:aNumb:As.Название~ ~IFS:примечание<>'':THEN~:::~SQL2:aPrim:AsString~~ENDIF~;;~SQL2:oNumb:AsInt~;;~SQL2:clNu1:As.Текстура~/~SQL2:clNu2:As.Текстура~;;~AsFloat:Количество~;;~SQL2:aQtyA:AsString~;;~SQL2:aSeb1:AsFloat~;;~SQL2:aPerc:AsFloat~;;~SQL2:nEL:AsInteger~;;~SQL2:CLKK:AsString~;;~SQL2:ATYPM:AsString~;;~SQL2:ATYPP:AsString~;;~SQL2:aLeng:AsFloat~;;~SQL2:aRadi:AsFloat~;;~AsFloat:Цена_БезСкидок~;;~AsFloat:СуммаБезСкидки~;;~AsFloat:СуммаСоСкидкой~;;~SQL2:aTypI:AsInteger~;;~SQL2:aQtyP:AsInteger~;;~SQL2:aUgp1:AsInteger~;;~SQL2:aUgp2:AsInteger~;;~SQL2:nSq:AsInteger~;;
+~SQL2:Конец~
+##COMPLECTEND##
+##SKIZZENSTART##
+~ТОЧНОСТЬ:2:0~
+~AsInteger:булка=0~
+~AsInteger:текпозиция=0~
+~SQL1:Установить:SELECT * FROM ListOrd~
+~SQL1:Добавить:WHERE (pUnic=:Индекс1.AsInt:)~
+~SQL1:Добавить:ORDER BY oNumb~
+~SQL1:Начало~
+~SQL1:oNumb:AsInteger:НомерИзд~
+	~SQL2:Установить:SELECT DISTINCT aNumb, ABS(nEL) nEL, aView, aTypM, aTypP, clNum, clNu1, clNu2, aUg01, aUg02 FROM SpecPAU~
+	~SQL2:Добавить:WHERE (pUnic=:Индекс1.AsInt:)AND(oNumb=:НомерИзд.AsInteger:) AND nEL<>0 ~
+	~SQL2:Добавить:ORDER BY aTypM, nEL~
+	~SQL2:Начало~
+	~SQL2:nEL:AsInteger:НомерЭлемента~
+	~SQL2:aNumb:AsString:Артикул~
+	~SQL2:aTypM:AsInteger:aTypM~
+	~SQL2:aTypP:AsInteger:aTypP~
+~IF:текпозиция=0:THEN~
+	~AsInteger:текпозиция=НомерИзд~
+~ENDIF~
+~IF:текпозиция<>НомерИзд:THEN~
+	~AsInteger:текпозиция=НомерИзд~
+	~AsInteger:булка=0~
+~ENDIF~
+~IF:user='Администратор':THEN~
+~ENDIF~
+~TEXT: шпросы~
+~IF:aTypM=1:AND:aTypP=12:AND:булка=0:THEN~
+	~SQL3:Установить:SELECT * FROM SaveELM~
+	~SQL3:Добавить:WHERE (pUnic=:Индекс1.AsInt:)AND(oNumb=:НомерИзд.AsInteger:)AND(aTypM=1)AND(TypP=3)~
+	~SQL3:Добавить:ORDER BY nEL~
+	~SQL3:Начало~
+		~SQL4:Установить:SELECT FIRST 1 aSizB, aHeig FROM Artikls~
+		~SQL4:Добавить:WHERE (aNumb=:SQL3aNumb.AsString:)~
+		~SQL4:Начало~
+~SQL1:oNumb:AsInteger~;;~SQL1:oSysP:AsInteger~;;~SQL3:nEL:AsInteger~;;~SQL3:aTypM:AsInteger~;;~SQL3:aNumb:AsString~;;~SQL3:c1x:AsFloat~;;~SQL3:c1y:AsFloat~;;~SQL3:c2x:AsFloat~;;~SQL3:c2y:AsFloat~;;~SQL3:aLen1:AsFloat~;;~SQL3:aLen2:AsFloat~;;~SQL2:aTypP:AsInteger~;;~SQL2:aView:AsInteger~;;~SQL4:aSizB:AsFloat~;;~SQL4:aHeig:AsFloat~;;~SQL3:aLeng:AsFloat~;;~SQL3:clNum:As.Текстура~;;;;;;~SQL2:aUg01:AsInteger~;;~SQL2:aUg02:AsInteger~;;
+		~SQL4:Конец~
+	~SQL3:Конец~
+	~AsInteger:булка=1~
+~ELSE~
+~TEXT: все остальное~
+	~SQL3:Установить:SELECT * FROM SaveELM~
+	~SQL3:Добавить:WHERE (pUnic=:Индекс1.AsInt:)AND(oNumb=:НомерИзд.AsInteger:)AND(aNumb=:Артикул.AsString:) AND(nEL=:НомерЭлемента.AsInteger:)~
+	~SQL3:Добавить:ORDER BY nEL~
+	~SQL3:Начало~
+		~SQL4:Установить:SELECT FIRST 1 aSizB, aHeig FROM Artikls~
+		~SQL4:Добавить:WHERE (aNumb=:Артикул.AsString:)~
+		~SQL4:Начало~
+~SQL1:oNumb:AsInteger~;;~SQL1:oSysP:AsInteger~;;~SQL2:nEL:AsInteger~;;~SQL2:aTypM:AsInteger~;;~SQL2:aNumb:AsString~;;~SQL3:c1x:AsFloat~;;~SQL3:c1y:AsFloat~;;~SQL3:c2x:AsFloat~;;~SQL3:c2y:AsFloat~;;~SQL3:aLen1:AsFloat~;;~SQL3:aLen2:AsFloat~;;~SQL2:aTypP:AsInteger~;;~SQL2:aView:AsInteger~;;~SQL4:aSizB:AsFloat~;;~SQL4:aHeig:AsFloat~;;~SQL3:aLeng:AsFloat~;;~SQL2:clNum:As.Текстура~;;~SQL2:clNu1:As.Текстура~;;~SQL2:clNu2:As.Текстура~;;~SQL2:aUg01:AsInteger~;;~SQL2:aUg02:AsInteger~;;
+		~SQL4:Конец~
+	~SQL3:Конец~
+~ENDIF~
+	~SQL2:Конец~
+~SQL1:Конец~
+##SKIZZENEND##
+~AsString:вфайл=STRCAT(nom,'.')~
+~AsString:вфайл=STRCAT(вфайл,user)~
+~AsString:вфайл=STRCAT(вфайл,'.txt')~
+~AsString:вфайл=VerFileName(вфайл)~
+~Отчет:Сохранить_в_файл:D?\Export\:вфайл.AsString~
+~ПРОЕКТ:КОНЕЦ~
+~Отчет.Закрыть~
+~Отчет:Запустить_файл:C?\ProfSegment\Profstroy4\auto\:user.AsString:\exportdem2.url~
