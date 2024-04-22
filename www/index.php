@@ -65,3 +65,4 @@ foreach ($all as $item) {
 //$homepage = file_get_contents('../hlam/hlam.txt');
 //echo $homepage;
 
+echo "Hello new branch";
